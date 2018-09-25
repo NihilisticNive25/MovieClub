@@ -1,28 +1,39 @@
 import React from 'react'
 import MovieCard from './movieCard.js'
-const movieList = ({movieList, movieCategory}) => {
+
+const movieList = ({ movieList,  userId, movieCategory }) => {
+	console.log(userId)
+	const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  		"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+	];
+
 	return (
 		<div>
-		<div className=''>{movieCategory}</div>
+		<h2 className=''>{movieCategory}</h2>
+		<div className='flex flex-wrap justify-center'>
+		
 		{
 			movieList.map((movie, i) => {
 			return (
-			<MovieCard 
+			<MovieCard className='width250'
 				key= {i}
-				id={movie.id} 
+				userId = {userId}
+				movieId={movie.id} 
 				title={movie.title} 
 				voteavg={movie.vote_average}
 				overview={movie.overview}
 				poster = {`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-				releaseDate = {movie.release_date.substring(0,4)}
-				like = {true}
+				releaseDate = {` ${monthNames[new Date(movie.release_date).getMonth()]}, ${movie.release_date.substring(0,4)} `}
+				like = {movie.like}
 			/>
 			);
 		})
 		}
 	</div>
+	</div>
 	);
 }
+
 
 
 export default movieList;
