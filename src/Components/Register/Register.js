@@ -25,7 +25,7 @@ onPasswordChange = (event) => {
 
 onSubmitRegister = () => {
   console.log(this.state);
-  fetch('http://localhost:3001/register', {
+  fetch('https://murmuring-castle-58180.herokuapp.com/register', {
     method : 'post',
     headers : {'Content-Type' : 'application/json'},
     body : JSON.stringify({
