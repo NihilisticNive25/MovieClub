@@ -18,8 +18,8 @@ onPasswordChange = (event) => {
 }
 
 onSubmitSignIn = () => {
-  console.log(this.state);
-  fetch('https://murmuring-castle-58180.herokuapp.com/signin', {
+  
+  fetch('http://localhost:3001/signin', {
     method : 'post',
     headers : {'Content-Type' : 'application/json'},
     body : JSON.stringify({
@@ -29,12 +29,14 @@ onSubmitSignIn = () => {
   })
   .then(res => res.json())
   .then(data => {
+    console.log(data);
     if(data.id){
       this.props.loadUser(data);
       this.props.onRouteChange('home');
       this.props.getNowPlaying(data);
     }
   })
+  .catch(err => console.log(err))
   
 }
   render (){
@@ -50,18 +52,18 @@ onSubmitSignIn = () => {
         <label className="db fw6 white-80 lh-copy f6">Email</label>
         <input 
 onChange={this.onEmailChange}
-        className="pa2 input-reset ba bg-transparent  b--white hover-white w-100" type="email" name="email-address"  id="email-address"/>
+        className="pa2 input-reset white ba bg-transparent  b--white hover-white w-100" type="email" name="email-address"  id="email-address"/>
       </div>
       <div className="mv3">
         <label className="db fw6 white-80  lh-copy f6">Password</label>
         <input 
 onChange={this.onPasswordChange}
-        className="b pa2 input-reset ba bg-transparent  b--white hover-white w-100" type="password" name="password"  id="password"/>
+        className="b pa2 input-reset white ba bg-transparent  b--white hover-white w-100" type="password" name="password"  id="password"/>
       </div>
     </fieldset>
     <div className="">
       <input onClick={this.onSubmitSignIn} 
-      className="b ph3 f1 pv2 input-reset ba white-80  b--white bg-transparent grow pointer f6 dib" type="submit" value="Sign in"/>
+      className="b ph3 f1 pv2 input-reset  ba white-80  b--white bg-transparent grow pointer f6 dib" type="submit" value="Sign in"/>
     </div>
     <div className="lh-copy mt3">
       <p onClick={() => onRouteChange('register')} className="f6 link dim white-80 db pointer">Register</p>

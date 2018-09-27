@@ -25,7 +25,7 @@ onPasswordChange = (event) => {
 
 onSubmitRegister = () => {
   console.log(this.state);
-  fetch('https://murmuring-castle-58180.herokuapp.com/register', {
+  fetch('http://localhost:3001/register', {
     method : 'post',
     headers : {'Content-Type' : 'application/json'},
     body : JSON.stringify({
@@ -37,13 +37,14 @@ onSubmitRegister = () => {
   .then(res => res.json())
   .then(user => {
     console.log(user)
-    if(user){
+    if(user.id > 0){
       this.props.loadUser(user)
       this.props.onRouteChange('home');
       this.props.getNowPlaying(user);
     }
 
   })
+  .catch(err => console.log(err))
   
 }
   render (){
@@ -60,20 +61,20 @@ onSubmitRegister = () => {
       <label className="db fw6 lh-copy f6 white" >Name</label>
         <input 
           onChange = { this.onNameChange }
-        className="pa2 input-reset ba bg-transparent white hover-white width93" name="username" />
+        className="pa2 white input-reset ba bg-transparent white hover-white width93" name="username" />
       </div>
       <div className="mt3">
         <label className="db fw6 white lh-copy f6" htmlFor="email-address">Email</label>
         <input 
         onChange = { this.onEmailChange }
-        className="pa2 input-reset ba bg-transparent white hover-white w-100" type="email" 
+        className="pa2 white input-reset ba bg-transparent white hover-white w-100" type="email" 
         name="email-address"  id="email-address"/>
       </div>
       <div className="mv3">
         <label className="db fw6 white lh-copy f6" htmlFor="password">Password</label>
         <input 
         onChange = { this.onPasswordChange }
-        className="b pa2 input-reset ba bg-transparent white hover-white w-100" type="password" name="password"  id="password"/>
+        className="b white pa2 input-reset ba bg-transparent white hover-white w-100" type="password" name="password"  id="password"/>
       </div>
     </fieldset>
     <div className="pb1">

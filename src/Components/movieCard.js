@@ -6,7 +6,7 @@ const movieCard = ({movieId, userId, title, voteavg, overview, poster, releaseDa
   const likeSwitch = (e) => {
     e.persist();
     console.log({movieId,userId,like})
-    fetch('https://murmuring-castle-58180.herokuapp.com/likeMovie', {
+    fetch('http://localhost:3001/likeMovie', {
     method : 'put',
     headers : {'Content-Type' : 'application/json'},
     body : JSON.stringify({
@@ -17,7 +17,7 @@ const movieCard = ({movieId, userId, title, voteavg, overview, poster, releaseDa
   })
   .then(res => res.json())
   .then(data => {
-    
+    console.log(data);
     if(data > 0){
       like = !like;
       const image = e.target;
