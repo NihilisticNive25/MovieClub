@@ -35,7 +35,7 @@ class App extends React.Component {
 
 	onButtonSubmit = (movieCategory) => {  
    
-    let url = `http://localhost:3001/fetchMovieList/${movieCategory}/${this.state.user.id}`;  
+    let url = `https://morning-anchorage-60518.herokuapp.com/fetchMovieList/${movieCategory}/${this.state.user.id}`;  
       fetch(url)
       .then(res => res.json())
       .then((data) => {
@@ -84,7 +84,7 @@ class App extends React.Component {
 
 getNowPlaying = (data) => {
   this.setState({movieCategory : "Now Playing"})
-   let url = `http://localhost:3001/fetchMovieList/nowPlaying/${data.id}`;  
+   let url = `https://morning-anchorage-60518.herokuapp.com/fetchMovieList/nowPlaying/${data.id}`;  
       fetch(url)
       .then(res => res.json())
       .then((data) => {

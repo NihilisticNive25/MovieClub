@@ -6,7 +6,7 @@ const movieCard = ({movieId, userId, title, voteavg, overview, poster, releaseDa
   const likeSwitch = (e) => {
     e.persist();
     console.log({movieId,userId,like})
-    fetch('http://localhost:3001/likeMovie', {
+    fetch('https://morning-anchorage-60518.herokuapp.com/likeMovie', {
     method : 'put',
     headers : {'Content-Type' : 'application/json'},
     body : JSON.stringify({
